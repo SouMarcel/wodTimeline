@@ -56,8 +56,8 @@ ROOT_URLCONF = 'wodTimeline.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')], # adicionado a pasta ./templates a lista
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Diretório global de templates (opcional)
+        'APP_DIRS': True,  # Habilita a busca de templates dentro dos diretórios de cada app
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -65,9 +65,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        }, 
+        },
     },
 ]
+
 
 WSGI_APPLICATION = 'wodTimeline.wsgi.application'
 
