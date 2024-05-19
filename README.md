@@ -1,9 +1,8 @@
 # wodTimeline
-uma pagina para reunir todo o lore do universo de RPD World Of Darkness
-
+Uma pagina para reunir todo o lore do universo de RPG World Of Darkness
 
 ## Descrição do Projeto
-SantaTerapia é um projeto de aplicativo web desenvolvido em Django para gerenciamento de consultas entre profissionais de saúde mental e pacientes. Ele oferece funcionalidades como agendamento de consultas, registro de documentos e lembretes para próximas consultas.
+A ideia é pode reunir de forma pratica e facil e demonstrar na forma de uma linha do tempo todo o timeline - lore - do universo vapirico de World Of Darkness
 
 ## Instalação
 
@@ -21,8 +20,8 @@ Certifique-se de ter o Python e o Django instalados em seu ambiente de desenvolv
 
 Exemplo de comandos:
 ```bash
-git clone https://github.com/seu-usuario/santaTerapia.git
-cd santaTerapia
+git clone https://github.com/seu-usuario/wodTimeline.git
+cd wodTimeline
 python -m venv venv
 source venv/bin/activate (ou venv\Scripts\activate.bat para Windows)
 pip install -r requirements.txt
