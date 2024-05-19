@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}  <!-- Proteção CSRF -->
+        {{ form.as_p }}  <!-- Renderiza o formulário -->
+        <button type="submit">Register</button>
+    </form>
+    <!-- Adicional: link para a página de login -->
+    <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui</a>.</p>
+</body>
+</html>

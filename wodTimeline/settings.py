@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#1-@7mglddl^40+ih9u&xz*x^0b=-noe9)ogvv)i%-u(qaj2bh'
+SECRET_KEY = 'django-insecure-+j^du+8_hoz_0v%fy(ko++g5852$gi7vv#a91kw@o!ac$z2bd2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'wodTimeline.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # adicionado a pasta ./templates a lista
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -63,7 +65,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        },
+        }, 
     },
 ]
 
@@ -103,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-BR'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -115,9 +117,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
+STATIC_ROOT = os.path.join('static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# URL para redirecionar após o login bem-sucedido
+LOGIN_REDIRECT_URL = 'home'  # Ajuste para a URL desejada, por exemplo, 'dashboard' ou outra página inicial
+
+# URL para redirecionar após o logout
+LOGOUT_REDIRECT_URL = 'login'
