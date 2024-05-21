@@ -65,7 +65,7 @@ ROOT_URLCONF = 'wodTimeline.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Diretório global de templates (opcional)
+        'DIRS': [os.path.join(BASE_DIR, 'wodTimeline','templates')],  # Diretório global de templates (opcional)
         'APP_DIRS': True,  # Habilita a busca de templates dentro dos diretórios de cada app
         'OPTIONS': {
             'context_processors': [
@@ -128,7 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'wodTimeline', 'static')]
 STATIC_ROOT = os.path.join('static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
