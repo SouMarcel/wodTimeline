@@ -1,4 +1,7 @@
 # estrutura de diretórios
+
+_valide a ordem das pastas templates:_
+
 ```bash
 wodTimeline/
 ├── manage.py
