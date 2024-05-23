@@ -3,41 +3,41 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from datetime import date
 from users.models import Livro
 
-
-# Modelo para representar um personagem
 class Personagem(models.Model):
-    # Nome do personagem
-    nome = models.CharField("nome", max_length=100, null=False, blank=False)
-    # Alcunha do personagem
-    alcunha = models.CharField("alcunha", max_length=100, blank=True, null=True)
-    # Mote do personagem (opcional)
-    mote = models.TextField(blank=True, null=True)
-    # URL da ficha do personagem
-    ficha = models.URLField(_("Ficha"), max_length=200)
-    # Data de nascimento do personagem
-    nascimento = models.DateField(_("Data de Nascimento"), auto_now=False, auto_now_add=False)
-    # Relacionamento com a Clã
-    cla = models.ForeignKey('clas.Cla', verbose_name=_("Cla"), on_delete=models.CASCADE)
-    # Relacionamento com as disciplinas
+    nome = models.CharField(_("nome"), max_length=100, null=False, blank=False)
+    alcunha = models.CharField(_("Alcunha"), max_length=100, blank=True, null=True)
+    mote = models.TextField(_("Mote"), blank=True, null=True)
+    biografia = models.TextField(_("Biografia"), blank=True, null=True)
+    ficha = models.URLField(_("Ficha"), max_length=200, blank=True, null=True)
+    nascimento = models.DateField(_("Data de Nascimento"), blank=True, null=True)
+    abraco = models.DateField(_("Abraço"), blank=True, null=True)
+    morte_final = models.DateField(_("Morte final"), blank=True, null=True)
+    geracao = models.PositiveSmallIntegerField(_("Geração"), blank=True, null=True)
+    senhor = models.ForeignKey("personagens.Personagem", verbose_name=_("Senhor"), on_delete=models.CASCADE, blank=True, null=True)
+    cla = models.ForeignKey('clas.Cla', verbose_name=_("Clã"), on_delete=models.CASCADE)
     disciplinas = models.ManyToManyField('clas.Disciplina', verbose_name=_("Disciplinas"))
-    # Relacionamento com a edição (representada pelo livro)
-    livro = models.ForeignKey(Livro, verbose_name=_("Edição"), on_delete=models.CASCADE , blank=True, null=True)
-    # Timestamp de criação
-    criado_em = models.DateField(_("Criacao"), auto_now=False, auto_now_add=True)
-    # Timestamp de atualização
-    atualizado_em = models.DateField(_("Update"), auto_now=True, auto_now_add=False)
+    livro = models.ForeignKey(Livro, verbose_name=_("Edição"), on_delete=models.CASCADE, blank=True, null=True)
+    criado_em = models.DateTimeField(_("Criado en"), auto_now=False, auto_now_add=True)
+    atualizado_em = models.DateTimeField(_("Atualizado em"), auto_now=True, auto_now_add=False)
 
     class Meta:
-        # Nome singular e plural para o modelo
         verbose_name = _("Personagem")
         verbose_name_plural = _("Personagens")
 
     def __str__(self):
-        # Representação em string do objeto Personagem
         return self.nome
 
     def get_absolute_url(self):
-        # URL para acessar detalhes de um personagem específico
         return reverse("Personagem_detail", kwargs={"pk": self.pk})
+
+    @property
+    def idade(self):
+        if self.morte_final:
+            return self.morte_final.year - self.nascimento.year - ((self.morte_final.month, self.morte_final.day) < (self.nascimento.month, self.nascimento.day))
+        elif self.nascimento:
+            today = date.today()
+            return today.year - self.nascimento.year - ((today.month, today.day) < (self.nascimento.month, self.nascimento.day))
+        return None
