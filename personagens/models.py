@@ -1,40 +1,43 @@
+# personagens/models.py
+
 from django.db import models
 from django.urls import reverse
-from clas.models import Disciplina, Cla
-from users.models import Edicao
+from django.utils.translation import gettext_lazy as _
+from users.models import Livro
 
-class Livro(models.Model):
-    nome = models.CharField("Nome", max_length=100)  # Nome do livro
-    edicao = models.ForeignKey(Edicao, verbose_name="Edição", on_delete=models.CASCADE)  # Edição do livro
-    editora = models.CharField("Editora", max_length=100)  # Editora do livro
-    revisao = models.CharField("Revisão", max_length=50, blank=True, null=True)  # Número ou identificação da revisão do livro
-    isbn = models.CharField("ISBN", max_length=13, blank=True, null=True)  # Número ISBN do livro
-    criado_em = models.DateField("Data de Criação", auto_now_add=True)  # Data de criação do registro (auto preenchida)
-    atualizado_em = models.DateField("Data de Atualização", auto_now=True)  # Data de última atualização do registro (auto atualizada)
+
+# Modelo para representar um personagem
+class Personagem(models.Model):
+    # Nome do personagem
+    nome = models.CharField("nome", max_length=100, null=False, blank=False)
+    # Alcunha do personagem
+    alcunha = models.CharField("alcunha", max_length=100, blank=True, null=True)
+    # Mote do personagem (opcional)
+    mote = models.TextField(blank=True, null=True)
+    # URL da ficha do personagem
+    ficha = models.URLField(_("Ficha"), max_length=200)
+    # Data de nascimento do personagem
+    nascimento = models.DateField(_("Data de Nascimento"), auto_now=False, auto_now_add=False)
+    # Relacionamento com a Clã
+    cla = models.ForeignKey('clas.Cla', verbose_name=_("Cla"), on_delete=models.CASCADE)
+    # Relacionamento com as disciplinas
+    disciplinas = models.ManyToManyField('clas.Disciplina', verbose_name=_("Disciplinas"))
+    # Relacionamento com a edição (representada pelo livro)
+    livro = models.ForeignKey(Livro, verbose_name=_("Edição"), on_delete=models.CASCADE , blank=True, null=True)
+    # Timestamp de criação
+    criado_em = models.DateField(_("Criacao"), auto_now=False, auto_now_add=True)
+    # Timestamp de atualização
+    atualizado_em = models.DateField(_("Update"), auto_now=True, auto_now_add=False)
 
     class Meta:
-        verbose_name = "livro"
-        verbose_name_plural = "livros"
+        # Nome singular e plural para o modelo
+        verbose_name = _("Personagem")
+        verbose_name_plural = _("Personagens")
 
     def __str__(self):
-        return f"{self.nome} - {self.edicao.nome}"
-
-    def get_absolute_url(self):
-        return reverse("Livro_detail", kwargs={"pk": self.pk})
-
-class Personagem(models.Model):
-    nome = models.CharField("Nome", max_length=100)  # Nome do personagem
-    alcunha = models.CharField("Alcunha", max_length=100, blank=True, null=True)  # Alcunha ou apelido do personagem (opcional)
-    mote = models.TextField("Mote", blank=True, null=True)  # Descrição ou mote do personagem (opcional)
-    ficha = models.URLField("Ficha", blank=True, null=True)  # URL para a ficha do personagem
-    nascimento = models.DateField("Data de Nascimento", blank=True, null=True)  # Data de nascimento do personagem
-    cla = models.ForeignKey(Cla, verbose_name="Clã", on_delete=models.CASCADE)  # Clã ao qual o personagem pertence
-    disciplinas = models.ManyToManyField(Disciplina, verbose_name="Disciplinas")  # Disciplinas que o personagem possui
-    criado_em = models.DateField("Data de Criação", auto_now_add=True)  # Data de criação do registro (auto preenchida)
-    atualizado_em = models.DateField("Data de Atualização", auto_now=True)  # Data de última atualização do registro (auto atualizada)
-
-    def __str__(self):
+        # Representação em string do objeto Personagem
         return self.nome
 
     def get_absolute_url(self):
+        # URL para acessar detalhes de um personagem específico
         return reverse("Personagem_detail", kwargs={"pk": self.pk})

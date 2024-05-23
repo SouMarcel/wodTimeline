@@ -1,47 +1,82 @@
-from django.db import models
-from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
+# clas/models.py
 
+from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
+from django.db import models
+from personagens.models import Livro
+
+# Modelo para representar uma disciplina
 class Disciplina(models.Model):
-    nome = models.CharField("Nome", max_length=100)  # Nome da disciplina
-    nivel = models.SmallIntegerField("Nível")  # Nível da disciplina
-    disciplina = models.CharField("Disciplina", max_length=50)  # Nome alternativo da disciplina (se houver)
-    descricao = models.TextField("Descrição")  # Descrição da disciplina
-    sistema = models.TextField("Sistema")  # Detalhes sobre o sistema relacionado à disciplina
-    efeito = models.TextField("Efeito")  # Efeito da disciplina
-    criado_em = models.DateField("Data de Criação", auto_now_add=True)  # Data de criação do registro (auto preenchida)
-    atualizado_em = models.DateField("Data de Atualização", auto_now=True)  # Data de última atualização do registro (auto atualizada)
+    # Nome da disciplina
+    nome = models.CharField(_("Nome"), max_length=100)
+    # Nível da disciplina
+    nivel = models.SmallIntegerField(_("Nível"))
+    # Tipo de disciplina
+    disciplina = models.CharField(_("Disciplina"), max_length=50)
+    # Descrição da disciplina
+    descricao = models.TextField(_("Descrição"))
+    # Sistema da disciplina
+    sistema = models.TextField(_("Sistema"))
+    # Efeito da disciplina
+    efeito = models.TextField(_("Efeito"), blank=True, null=True)
+    # Relacionamento com o livro
+    livro = models.ForeignKey(Livro, verbose_name=_("Livro"), on_delete=models.CASCADE, blank=True, null=True)
+    # Timestamp de criação
+    criado_em = models.DateField(_("Criacao"), auto_now=False, auto_now_add=True)
+    # Timestamp de atualização
+    atualizado_em = models.DateField(_("Update"), auto_now=True, auto_now_add=False)
 
     class Meta:
+        # Nome singular e plural para o modelo
         verbose_name = _("disciplina")
         verbose_name_plural = _("disciplinas")
 
     def __str__(self):
+        # Representação em string do objeto Disciplina
         return self.nome
 
     def get_absolute_url(self):
+        # URL para acessar detalhes de uma disciplina específica
         return reverse("Disciplina_detail", kwargs={"pk": self.pk})
 
+# Modelo para representar um clã
 class Cla(models.Model):
-    nome = models.CharField("Nome", max_length=100)  # Nome do clã
-    historia = models.TextField("História", blank=True, null=True)  # História do clã
-    mote = models.CharField("Mote", max_length=200, blank=True, null=True)  # Mote ou lema do clã
-    aparencia = models.TextField("Aparência", blank=True, null=True)  # Descrição da aparência característica dos membros do clã
-    refugio = models.TextField("Refúgio", blank=True, null=True)  # Descrição do refúgio ou local de residência do clã
-    criacao_personagens = models.TextField("Criação de Personagens", blank=True, null=True)  # Diretrizes para a criação de personagens do clã
-    organizacao = models.TextField("Organização", blank=True, null=True)  # Estrutura organizacional do clã
-    estereotipos = models.TextField("Estereótipos", blank=True, null=True)  # Estereótipos associados ao clã
-    disciplinas = models.ManyToManyField(Disciplina, verbose_name="Disciplinas")  # Disciplinas associadas ao clã
-    edicao = models.ForeignKey('users.Edicao', verbose_name=_("Edição"), on_delete=models.CASCADE)  # Edição do jogo associada ao clã
-    criado_em = models.DateField("Data de Criação", auto_now_add=True)  # Data de criação do registro (auto preenchida)
-    atualizado_em = models.DateField("Data de Atualização", auto_now=True)  # Data de última atualização do registro (auto atualizada)
+    # Nome do clã
+    nome = models.CharField(_("Nome"), max_length=100, blank=False, null=False)
+    # História do clã
+    historia = models.TextField(_("História"), blank=True, null=True)
+    apelido = models.CharField(_("Apelido"), max_length=50, blank=True, null=True) # Como o clã é conhecido
+    mote = models.CharField(_("Mote"), max_length=200, blank=True, null=True) # Mote do clã
+    seita = models.TextField(_("Seita"), blank=True, null=True) # Organização politica
+    # Aparência do clã
+    aparencia = models.TextField(_("Aparência"), blank=True, null=True)
+    # Refúgio do clã
+    refugio = models.TextField(_("Refúgio"), blank=True, null=True)
+    # Criação de personagens do clã
+    cria_persona = models.TextField(_("Criação de Personagens"), blank=True, null=True)
+    fraquezas = models.TextField(_("Fraquezas"), blank=True, null=True) # Fraquezas do clã
+    organizacao = models.TextField(_("Organização"), blank=True, null=True) # Organização do clã
+    antecedentes = models.TextField(_("Antecedentes"), blank=True, null=True) # Antecedentes comuns no clã
+    # Estereótipos do clã
+    estereotipos = models.TextField(_("Estereótipos"), blank=True, null=True)
+    # Relacionamento com as disciplinas
+    disciplinas = models.ManyToManyField(Disciplina, verbose_name=_("Disciplinas"))
+    # Relacionamento com o livro
+    livro = models.ForeignKey(Livro, verbose_name=_("Livro"), on_delete=models.CASCADE, blank=True, null=True)
+    # Timestamp de criação
+    criado_em = models.DateField(_("Criado em"), auto_now=False, auto_now_add=True)
+    # Timestamp de atualização
+    atualizado_em = models.DateField(_("Atualizado em"), auto_now=True, auto_now_add=False)
 
     class Meta:
+        # Nome singular e plural para o modelo
         verbose_name = _("clã")
         verbose_name_plural = _("clãs")
 
     def __str__(self):
-        return self.nome
+        # Representação em string do objeto Cla
+        return f'{self.nome} - {self.livro}'
 
     def get_absolute_url(self):
+        # URL para acessar detalhes de um clã específico
         return reverse("Cla_detail", kwargs={"pk": self.pk})

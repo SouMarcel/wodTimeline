@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Edicao
+from .models import Edicao, Livro
+
 
 @admin.register(Edicao)
 class EdicaoAdmin(admin.ModelAdmin):
@@ -7,3 +8,6 @@ class EdicaoAdmin(admin.ModelAdmin):
     list_display = ('nome', 'criado_em', 'atualizado_em')
     # Campos de pesquisa para facilitar a localização de registros na interface de administração
     search_fields = ('nome',)
+
+# Regista o modelo de Consulta da tabela completa
+admin.site.register(Livro)

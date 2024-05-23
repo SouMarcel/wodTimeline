@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.views.generic import DetailView
+from .models import Personagem
 
-# Create your views here.
+class PersonagemDetailView(DetailView):
+    model = Personagem
+    template_name = 'personagens/personagem_detail.html'
