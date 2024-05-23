@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
-from . models import clas
+from .models import Cla
 
-# Create your views here.
-#Cris a view para listar os clas existentes
-def clas(request):
-    return redirect('clas/clas')
+# Crie uma view para listar os clãs existentes
+def list_clas(request):
+    clãs = Cla.objects.all()  # Obtém todos os clãs do banco de dados
+    return render(request, 'clas.html', {'clãs': clãs})
+
+# View para redirecionar para a página de listagem de clãs
+def redirect_to_list_clas(request):
+    return redirect('list_clas')
+

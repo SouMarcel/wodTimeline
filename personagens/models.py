@@ -1,65 +1,40 @@
 from django.db import models
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
+from clas.models import Disciplina, Cla
+from users.models import Edicao
 
-
-# Create your models here.
-class Personagens(models.Model):
-    nome = models.CharField("nome",max_length=100, null=False, blank=False)  # Adiciona um campo name ao modelo
-    alcunha = models.CharField("alcunha", max_length=100)
-    mote = models.TextField
-    cla = 
-    disciplina = models.ManyToManyField(Disciplina, related_name='personagens')
-    ficha = 
-    nascimento =
-    criacao = 
-    
-
-    class Meta:
-        verbose_name = _("Personagem")
-        verbose_name_plural = _("Personagens")
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse("Personagem_detail", kwargs={"pk": self.pk})  # Ajuste 'Personagem_detail' para corresponder à sua URL real
-
-
-
-# Cria a tabela de Edição
-class Edicao(models.Model):
-    nome = models.CharField(_("Nome"), max_length=100)
-    criado_ts = models.DateTimeField(null=False, blank=False, default=timezone.now)
-    atualizado_ts = models.DateTimeField(default=timezone.now)
-
-    class Meta:
-        verbose_name = _("edição")
-        verbose_name_plural = _("edições")
-
-    def __str__(self):
-        return self.nome
-
-    def get_absolute_url(self):
-        return reverse("Edicao_detail", kwargs={"pk": self.pk})
-
-
-# Cria a tabela de Livro
 class Livro(models.Model):
-    nome = models.CharField(_("Nome"), max_length=100, blank=False, null=False)
-    edicao = models.ForeignKey(Edicao, verbose_name=_("Edição"), on_delete=models.CASCADE)
-    editora = models.CharField(_("Editora"), max_length=100)
-    revisao = models.CharField(_("Revisão"), max_length=50)
-    isbn = models.CharField(_("ISBN"), max_length=13)  # Adicionado max_length
-    criado_ts = models.DateTimeField(null=False, blank=False, default=timezone.now)
-    atualizado_ts = models.DateTimeField(default=timezone.now)
+    nome = models.CharField("Nome", max_length=100)  # Nome do livro
+    edicao = models.ForeignKey(Edicao, verbose_name="Edição", on_delete=models.CASCADE)  # Edição do livro
+    editora = models.CharField("Editora", max_length=100)  # Editora do livro
+    revisao = models.CharField("Revisão", max_length=50)  # Número ou identificação da revisão do livro
+    isbn = models.CharField("ISBN", max_length=13)  # Número ISBN do livro
+    criado_em = models.DateField("Data de Criação", auto_now_add=True)  # Data de criação do registro (auto preenchida)
+    atualizado_em = models.DateField("Data de Atualização", auto_now=True)  # Data de última atualização do registro (auto atualizada)
 
     class Meta:
-        verbose_name = _("livro")
-        verbose_name_plural = _("livros")
+        verbose_name = "livro"
+        verbose_name_plural = "livros"
 
     def __str__(self):
         return f"{self.nome} - {self.edicao.nome}"
 
     def get_absolute_url(self):
         return reverse("Livro_detail", kwargs={"pk": self.pk})
+
+class Personagem(models.Model):
+    nome = models.CharField("Nome", max_length=100)  # Nome do personagem
+    alcunha = models.CharField("Alcunha", max_length=100, blank=True)  # Alcunha ou apelido do personagem (opcional)
+    mote = models.TextField("Mote", blank=True)  # Descrição ou mote do personagem (opcional)
+    ficha = models.URLField("Ficha")  # URL para a ficha do personagem
+    nascimento = models.DateField("Data de Nascimento")  # Data de nascimento do personagem
+    cla = models.ForeignKey(Cla, verbose_name="Clã", on_delete=models.CASCADE)  # Clã ao qual o personagem pertence
+    disciplinas = models.ManyToManyField(Disciplina, verbose_name="Disciplinas")  # Disciplinas que o personagem possui
+    criado_em = models.DateField("Data de Criação", auto_now_add=True)  # Data de criação do registro (auto preenchida)
+    atualizado_em = models.DateField("Data de Atualização", auto_now=True)  # Data de última atualização do registro (auto atualizada)
+
+    def __str__(self):
+        return self.nome
+
+    def get_absolute_url(self):
+        return reverse("Personagem_detail", kwargs={"pk": self.pk})

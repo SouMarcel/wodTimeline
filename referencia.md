@@ -3,44 +3,52 @@
 _valide a ordem das pastas templates:_
 
 ```bash
-wodTimeline/
-├── manage.py
-├── .env
-├── wodTimeline/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-│   ├── templates/
-│   │   └── base.html
-│   ├── static/
-│   │   ├── css/
-│   │   │   └── styles.css
-│   │   ├── js/
-│   │   │   └── scripts.js
-│   │   └── img/
-│   │       └── logo.png
-├── users/
+wodTimeline
+├── clas
+│   ├── migrations
+│   │   └── ...
+│   ├── templates
+│   │   └── ...
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
-│   ├── forms.py
 │   ├── models.py
-│   ├── templates/
-│   │   └── users/
-│   │       ├── login.html
-│   │       └── register.html
-│   ├── tests.py
 │   ├── urls.py
-│   ├── views.py
-│   ├── migrations/
-│   │   └── __init__.py
-│   └── __pycache__/
-└── venv/
-    ├── Include/
-    ├── Lib/
-    ├── Scripts/
-    └── pyvenv.cfg
+│   └── views.py
+├── personagens
+│   ├── migrations
+│   │   └── ...
+│   ├── templates
+│   │   └── ...
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+├── static
+│   ├── css
+│   │   └── ...
+│   ├── img
+│   │   └── ...
+│   └── js
+│       └── ...
+├── templates
+│   └── ...
+├── venv
+│   ├── Include
+│   │   └── ...
+│   ├── Lib
+│   │   └── ...
+│   └── Scripts
+│       └── ...
+├── wodTimeline
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+└── .env
+
 ```
 
