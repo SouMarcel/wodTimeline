@@ -59,7 +59,7 @@ class Cla(models.Model):
     antecedentes = models.TextField(_("Antecedentes"), blank=True, null=True) # Antecedentes comuns no clã
     # Estereótipos do clã
     estereotipos = models.TextField(_("Estereótipos"), blank=True, null=True)
-    logo = models.ImageField(_("Logo"), upload_to='logo', height_field=100, width_field=100, max_length=100, blank=True, null=True)
+    logo = models.ImageField(_("Logo"), upload_to='logo', height_field=None, width_field=None, max_length=None, blank=True, null=True)
     disciplinas = models.ManyToManyField(Disciplina, verbose_name=_("Disciplinas")) # Relacionamento com as disciplinas
     # Relacionamento com o livro
     livro = models.ForeignKey(Livro, verbose_name=_("Livro"), on_delete=models.CASCADE, blank=True, null=True)
