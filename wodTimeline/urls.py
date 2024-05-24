@@ -7,5 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # Rota para a área administrativa
     path('clas/', include('clas.urls')),
     path('users/', include('users.urls')),  # Inclusão das rotas do app 'users'
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
 ]

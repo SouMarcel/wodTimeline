@@ -25,9 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Carregar variáveis de ambiente do arquivo .env
 load_dotenv()
 
-# Definir o diretório base do projeto
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 # Obter variáveis de ambiente
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
