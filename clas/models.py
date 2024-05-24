@@ -33,7 +33,7 @@ class Disciplina(models.Model):
 
     def __str__(self):
         # Representação em string do objeto Disciplina
-        return self.nome
+        return f'{self.nome} - {self.nivel} - {self.livro}'
 
     def get_absolute_url(self):
         # URL para acessar detalhes de uma disciplina específica
