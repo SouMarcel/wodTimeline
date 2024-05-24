@@ -20,8 +20,9 @@ class Personagem(models.Model):
     cla = models.ForeignKey('clas.Cla', verbose_name=_("Clã"), on_delete=models.CASCADE)
     disciplinas = models.ManyToManyField('clas.Disciplina', verbose_name=_("Disciplinas"))
     livro = models.ForeignKey(Livro, verbose_name=_("Edição"), on_delete=models.CASCADE, blank=True, null=True)
-    criado_em = models.DateTimeField(_("Criado em"), auto_now=False, auto_now_add=True)
-    atualizado_em = models.DateTimeField(_("Atualizado em"), auto_now=True, auto_now_add=False)
+    criado_em = models.DateField(_("Criado em"), auto_now_add=True)
+    # Timestamp de atualização
+    atualizado_em = models.DateField(_("Atualizado em"), auto_now=True)
 
     class Meta:
         # Configurações meta do modelo Personagem

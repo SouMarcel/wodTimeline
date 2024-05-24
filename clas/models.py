@@ -22,9 +22,9 @@ class Disciplina(models.Model):
     # Relacionamento com o livro
     livro = models.ForeignKey(Livro, verbose_name=_("Livro"), on_delete=models.CASCADE, blank=True, null=True)
     # Timestamp de criação
-    criado_em = models.DateField(_("Criacao"), auto_now=False, auto_now_add=True)
+    criado_em = models.DateField(_("Criado em"), auto_now_add=True)
     # Timestamp de atualização
-    atualizado_em = models.DateField(_("Update"), auto_now=True, auto_now_add=False)
+    atualizado_em = models.DateField(_("Atualizado em"), auto_now=True)
 
     class Meta:
         # Nome singular e plural para o modelo
@@ -64,9 +64,9 @@ class Cla(models.Model):
     # Relacionamento com o livro
     livro = models.ForeignKey(Livro, verbose_name=_("Livro"), on_delete=models.CASCADE, blank=True, null=True)
     # Timestamp de criação
-    criado_em = models.DateField(_("Criado em"), auto_now=False, auto_now_add=True)
+    criado_em = models.DateField(_("Criado em"), auto_now_add=True)
     # Timestamp de atualização
-    atualizado_em = models.DateField(_("Atualizado em"), auto_now=True, auto_now_add=False)
+    atualizado_em = models.DateField(_("Atualizado em"), auto_now=True)
 
     class Meta:
         # Nome singular e plural para o modelo

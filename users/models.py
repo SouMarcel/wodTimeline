@@ -10,9 +10,9 @@ class Edicao(models.Model):
     # Nome da edição
     nome = models.CharField(_("Nome"), max_length=100)
     # Timestamp de criação
-    criado_em = models.DateField(_("Criacao"), auto_now=False, auto_now_add=True)
+    criado_em = models.DateField(_("Criado em"), auto_now_add=True)
     # Timestamp de atualização
-    atualizado_em = models.DateField(_("Update"), auto_now=True, auto_now_add=False)
+    atualizado_em = models.DateField(_("Atualizado em"), auto_now=True)
 
     class Meta:
         # Nome singular e plural para o modelo
@@ -41,9 +41,9 @@ class Livro(models.Model):
     # ISBN do livro (opcional)
     isbn = models.CharField(_("ISBN"), max_length=13, blank=True, null=True)
     # Timestamp de criação
-    criado_em = models.DateField(_("Criacao"), auto_now=False, auto_now_add=True)
+    criado_em = models.DateField(_("Criado em"), auto_now_add=True)
     # Timestamp de atualização
-    atualizado_em = models.DateField(_("Update"), auto_now=True, auto_now_add=False)
+    atualizado_em = models.DateField(_("Atualizado em"), auto_now=True)
 
     class Meta:
         # Nome singular e plural para o modelo
