@@ -47,7 +47,7 @@ def edicao_list(request):
         'edicoes': edicoes,
         'title': 'Lista de Edições'
     }
-    return render(request, 'edicoes/edicao_list.html', context)
+    return render(request, 'livros/edicao_list.html', context)
 
 # View to see the details of a single edition
 def edicao_detail(request, pk):
@@ -56,7 +56,7 @@ def edicao_detail(request, pk):
         'edicao': edicao,
         'title': f'Detalhes da Edição: {edicao.nome}'
     }
-    return render(request, 'edicoes/edicao_detail.html', context)
+    return render(request, 'livros/edicao_detail.html', context)
 
 # View to add a new edition
 def edicao_create(request):
@@ -71,4 +71,4 @@ def edicao_create(request):
         'form': form,
         'title': 'Adicionar Nova Edição'
     }
-    return render(request, 'edicoes/edicao_form.html', context)
+    return render(request, 'livros/edicao_form.html', context)

@@ -11,6 +11,8 @@
         {{ form.as_p }}
         <button type="submit">Salvar</button>
     </form>
+    <a href="{% url 'edicao_create' %}">Adicionar Nova Edição</a>
+    <br>
     <a href="{% url 'livro_list' %}">Voltar à lista de livros</a>
 </body>
 </html>
