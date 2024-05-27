@@ -1,18 +1,74 @@
-from django.shortcuts import render
+# livros/views.py
 
-# Create your views here.
-"""
-# notacao 1
-def livros_ls(request):
-    livros_ls = livros.objects.all()
-    return render(request, 'livros/livros_ls.html', {'livros_ls': livros_ls})
-    """
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
+from .models import Livro, Edicao
+from .forms import LivroForm, EdicaoForm
 
-# notação 2
-def livros_ls(request):
-    livros_ls = livros.objects.all()
+# View to list all books
+def livro_list(request):
+    livros = Livro.objects.all()
     context = {
-        'livros_ls': livros_ls, # conteudo da model livros
-        'title': 'Lista de Personagens' # gera ima variavel chamda title que pode ser chamada diretamente no tamplate
+        'livros': livros,
+        'title': 'Lista de Livros'
     }
-    return render(request, 'livros/lista.html', context)
+    return render(request, 'livros/livro_list.html', context)
+
+# View to see the details of a single book
+def livro_detail(request, pk):
+    livro = get_object_or_404(Livro, pk=pk)
+    context = {
+        'livro': livro,
+        'title': f'Detalhes do Livro: {livro.nome}'
+    }
+    return render(request, 'livros/livro_detail.html', context)
+
+# View to add a new book
+def livro_create(request):
+    if request.method == 'POST':
+        form = LivroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('livro_list')
+    else:
+        form = LivroForm()
+    context = {
+        'form': form,
+        'title': 'Adicionar Novo Livro'
+    }
+    return render(request, 'livros/livro_form.html', context)
+
+#### Views for `Edicao`
+
+# View to list all editions
+def edicao_list(request):
+    edicoes = Edicao.objects.all()
+    context = {
+        'edicoes': edicoes,
+        'title': 'Lista de Edições'
+    }
+    return render(request, 'edicoes/edicao_list.html', context)
+
+# View to see the details of a single edition
+def edicao_detail(request, pk):
+    edicao = get_object_or_404(Edicao, pk=pk)
+    context = {
+        'edicao': edicao,
+        'title': f'Detalhes da Edição: {edicao.nome}'
+    }
+    return render(request, 'edicoes/edicao_detail.html', context)
+
+# View to add a new edition
+def edicao_create(request):
+    if request.method == 'POST':
+        form = EdicaoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('edicao_list')
+    else:
+        form = EdicaoForm()
+    context = {
+        'form': form,
+        'title': 'Adicionar Nova Edição'
+    }
+    return render(request, 'edicoes/edicao_form.html', context)
