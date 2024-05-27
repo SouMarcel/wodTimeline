@@ -1,0 +1,12 @@
+<!-- edicoes/templates/edicoes/edicao_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>Nome: {{ edicao.nome }}</p>
+    <a href="{% url 'edicao_list' %}">Voltar à lista de edições</a>
+</body>
+</html>

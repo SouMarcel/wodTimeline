@@ -1,0 +1,16 @@
+<!-- livros/templates/livros/livro_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>Nome: {{ livro.nome }}</p>
+    <p>Edição: {{ livro.edicao.nome }}</p>
+    <p>Editora: {{ livro.editora }}</p>
+    <p>Revisão: {{ livro.revisao }}</p>
+    <p>ISBN: {{ livro.isbn }}</p>
+    <a href="{% url 'livro_list' %}">Voltar à lista de livros</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!-- livros/templates/livros/livro_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <ul>
+        {% for livro in livros %}
+            <li>
+                <a href="{% url 'livro_detail' livro.pk %}">{{ livro.nome }} - {{ livro.edicao.nome }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'livro_create' %}">Adicionar Novo Livro</a>
+</body>
+</html>

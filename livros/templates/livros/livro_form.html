@@ -1,0 +1,16 @@
+<!-- livros/templates/livros/livro_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'livro_list' %}">Voltar à lista de livros</a>
+</body>
+</html>
