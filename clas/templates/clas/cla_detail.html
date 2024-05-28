@@ -1,0 +1,25 @@
+<!-- clas/templates/clas/cla_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>Nome: {{ cla.nome }}</p>
+    <p>Historia: {{ cla.historia }}</p>
+    <p>Apelido: {{ cla.apelido }}</p>
+    <p>Mote: {{ cla.mote }}</p>
+    <p>Seita: {{ cla.seita }}</p>
+    <p>Aparencia: {{ cla.aparencia }}</p>
+    <p>Refugio: {{ cla.refugio }}</p>
+    <p>Criação de personagem: {{ cla.cria_persona }}</p>
+    <p>Fraquezas: {{ cla.fraquezas }}</p>
+    <p>Organização: {{ cla.organizacao }}</p>
+    <p>Antecedentes: {{ cla.antecedentes }}</p>
+    <p>Estereotipos: {{ cla.estereotipos }}</p>
+    <p>Logo do cla: {{ cla.logo }}</p>
+    <p>Livro: {{ cla.livro }}</p>
+    <a href="{% url 'cla_list' %}">Voltar à lista de clas</a>
+</body>
+</html>

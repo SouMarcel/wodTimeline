@@ -38,3 +38,7 @@ class Disciplina(models.Model):
     def get_absolute_url(self):
         # URL para acessar detalhes de uma disciplina específica
         return reverse("Disciplina_detail", kwargs={"pk": self.pk})
+    
+    @staticmethod
+    def nivel_zero():
+        return Disciplina.objects.filter(nivel=0)

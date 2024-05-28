@@ -1,0 +1,25 @@
+<!-- livros/templates/livros/livro_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'cla_create' %}">Adicionar Novo Cla</a>
+    <br>
+    <a href="{% url 'cla_list' %}">Voltar à lista de Clas</a>
+</body>
+
+{% comment %} 
+{{ form.as_p }} em um template Django, está pedindo para o Django renderizar o formulário como parágrafos HTML. Cada campo do formulário será envolvido em um elemento <p>, o que é útil para uma apresentação básica e organizada do formulário.
+{{ form.as_ul }}: Renderiza o formulário como uma lista não ordenada (<ul>). Cada campo do formulário é envolvido por um elemento <li>, o que é útil se você quiser que seu formulário seja exibido como uma lista de itens.
+{{ form.as_table }}: Renderiza o formulário como linhas de uma tabela (<tr>). Cada campo é colocado em uma linha de tabela, com o label e o campo em células separadas (<td>). Isso é útil se você quiser incorporar o formulário em uma tabela HTML existente.
+{% endcomment %}
+</html>
+
