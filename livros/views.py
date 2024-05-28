@@ -5,6 +5,12 @@ from django.urls import reverse_lazy
 from .models import Livro, Edicao
 from .forms import LivroForm, EdicaoForm
 
+
+# home
+def home(request):
+    return render(request, 'livros/home.html')
+
+
 # View to list all books
 def livro_list(request):
     livros = Livro.objects.all()

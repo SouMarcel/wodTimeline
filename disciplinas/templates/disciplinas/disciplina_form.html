@@ -1,0 +1,18 @@
+<!-- livros/templates/livros/livro_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'disciplina_create' %}">Adicionar Nova Disciplina</a>
+    <br>
+    <a href="{% url 'disciplina_list' %}">Voltar à lista de Disciplinas</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!-- disciplinas/templates/disciplinas/disciplina_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>Nome: {{ disciplina.nome }}</p>
+    <p>Nível: {{ disciplina.nivel }}</p>
+    <p>Disciplina: {{ disciplina.disciplina }}</p>
+    <p>Descrição: {{ disciplina.descricao }}</p>
+    <p>Sistema: {{ disciplina.sistema }}</p>
+    <p>Efeito: {{ disciplina.efeito }}</p>
+    <p>Livro: {{ disciplina.livro }}</p>
+    <a href="{% url 'disciplina_list' %}">Voltar à lista de Disciplinas</a>
+</body>
+</html>
