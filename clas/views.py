@@ -32,10 +32,10 @@ def cla_create(request):
     if request.method == "POST":
         form = ClaForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect(cla_detail)
-            # novo_cla = form.save()
-            # return redirect('cla_detail', pk=novo_cla.pk)  # Redireciona para os detalhes do novo clã
+            # form.save()
+            # return redirect(cla_detail)
+            novo_cla = form.save()
+            return redirect('cla_detail', pk=novo_cla.pk)  # Redireciona para os detalhes do novo clã
     else:
         form = ClaForm()
     context = {

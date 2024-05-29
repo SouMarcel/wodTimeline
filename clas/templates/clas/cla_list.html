@@ -9,9 +9,9 @@
 <body>
     <h1>{{ title }}</h1>
     <ul>
-        {% for cla in clas %}
+        {% for cla in cla %}
         <li>
-            <a href="{% url 'cla_detail' cla.pk %}">{{ cla.nome }}</a>
+            <a href="{% url 'cla_detail' cla.pk %}">{{ cla.nome }} - {{ cla.livro }}</a>
         </li>
         {% endfor %}
     </ul>
