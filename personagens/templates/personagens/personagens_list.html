@@ -7,9 +7,9 @@
 <body>
     <h1>{{ title }}</h1>
     <ul>
-        {% for persongem in personagem %}
+        {% for personagem in personagens %}
             <li>
-                <a href="{% url 'personagem_list' personagem.pk %}">{{ personagem.nome }} - {{ livro.edicao.nome }}</a>
+                <a href="{% url 'personagens_detail' personagem.pk %}">{{ personagem.nome }} - {{ personagem.livro.nome }}</a>
             </li>
         {% endfor %}
     </ul>
