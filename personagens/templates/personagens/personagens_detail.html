@@ -1,0 +1,27 @@
+<!-- livros/templates/livros/livro_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+
+	<p>nome       : {{ personagem.nome        }}</p>
+    <p>alcunha    : {{ personagem.alcunha     }}</p>
+    <p>mote       : {{ personagem.mote        }}</p>
+    <p>biografia  : {{ personagem.biografia   }}</p>
+    <p>ficha_url  : {{ personagem.ficha_url   }}</p>
+    <p>ficha_pdf  : {{ personagem.ficha_pdf   }}</p>
+    <p>nascimento : {{ personagem.nascimento  }}</p>
+    <p>abraco     : {{ personagem.abraco      }}</p>
+    <p>morte_final: {{ personagem.morte_final }}</p>
+    <p>geracao    : {{ personagem.geracao     }}</p>
+    <p>senhor     : {{ personagem.senhor      }}</p>
+    <p>cla        : {{ personagem.cla         }}</p>
+    <p>disciplinas: {{ personagem.disciplinas }}</p>
+    <p>livro	  : {{ personagem.livro       }}</p>
+    <a href="{% url 'personagem_list' %}">Voltar à lista de Personagens</a>
+</body>
+</html>

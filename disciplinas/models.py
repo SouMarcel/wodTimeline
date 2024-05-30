@@ -33,12 +33,25 @@ class Disciplina(models.Model):
 
     def __str__(self):
         # Representação em string do objeto Disciplina
-        return f'{self.nome} - {self.nivel} - {self.livro}'
+        return f'{self.disciplina} - {self.nivel} - {self.nome} - {self.livro}'
 
     def get_absolute_url(self):
         # URL para acessar detalhes de uma disciplina específica
         return reverse("Disciplina_detail", kwargs={"pk": self.pk})
     
+    def save(self, *args, **kwargs):
+        # Sua lógica personalizada aqui
+        self.disciplina = self.disciplina.upper()
+        # Chama o método save da superclasse com todos os argumentos recebidos
+        super(Disciplina, self).save(*args, **kwargs)
+
+    
     @staticmethod
     def nivel_zero():
+        # Retorna todas as disciplinas com nível igual a zero
         return Disciplina.objects.filter(nivel=0)
+
+    @staticmethod
+    def nivel_nzero():
+        # Retorna todas as disciplinas com nível diferente de zero
+        return Disciplina.objects.exclude(nivel=0)

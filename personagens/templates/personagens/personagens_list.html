@@ -1,0 +1,18 @@
+<!-- personagens/templates/personagens/personagens_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <ul>
+        {% for persongem in personagem %}
+            <li>
+                <a href="{% url 'personagem_list' personagem.pk %}">{{ personagem.nome }} - {{ livro.edicao.nome }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'personagem_novo' %}">Adicionar Novo Personagem</a>
+</body>
+</html>

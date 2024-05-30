@@ -1,0 +1,45 @@
+<!-- personagens/templates/personagens/personagens_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <style>
+        .checkbox-inline {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Renderiza os campos do formulário exceto 'disciplinas' -->
+        {% for field in form %}
+            {% if field.name != 'disciplinas' %}
+                <div class="form-group">
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endif %}
+        {% endfor %}
+        
+        <!-- Renderiza o campo 'disciplinas' separadamente -->
+        <div class="form-group">
+            <label for="id_disciplinas">Disciplinas</label>
+            <div>
+                {% for checkbox in form.disciplinas %}
+                    <div class="checkbox-inline">
+                        {{ checkbox.tag }} {{ checkbox.choice_label }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+    <a href="{% url 'personagem_novo' %}">Adicionar Novo Personagem</a>
+    <br>
+    <a href="{% url 'personagens_list' %}">Voltar à lista de Personagens</a>
+</body>
+</html>
+

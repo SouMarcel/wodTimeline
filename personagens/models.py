@@ -17,7 +17,7 @@ class Personagem(models.Model):
     mote = models.TextField(_("Mote"), blank=True, null=True)
     biografia = models.TextField(_("Biografia"), blank=True, null=True)
     ficha_url = models.URLField(_("Ficha URL"), max_length=200, blank=True, null=True)
-    ficha_pdf = models.FileField(_("Ficha PDF"), upload_to=None, max_length=100)
+    ficha_pdf = models.FileField(_("Ficha PDF"), upload_to='fichas/', max_length=100, blank=True, null=True)
     nascimento = models.DateField(_("Data de Nascimento"), blank=True, null=True)
     abraco = models.DateField(_("Abraço"), blank=True, null=True)
     morte_final = models.DateField(_("Morte Final"), blank=True, null=True)
