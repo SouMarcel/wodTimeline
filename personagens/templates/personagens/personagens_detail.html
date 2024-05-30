@@ -1,4 +1,4 @@
-<!-- livros/templates/livros/livro_detail.html -->
+<!-- personagens/templates/personagens/personagens_detail.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +6,6 @@
 </head>
 <body>
     <h1>{{ title }}</h1>
-
 
 	<p>nome       : {{ personagem.nome        }}</p>
     <p>alcunha    : {{ personagem.alcunha     }}</p>
@@ -20,8 +19,13 @@
     <p>geracao    : {{ personagem.geracao     }}</p>
     <p>senhor     : {{ personagem.senhor      }}</p>
     <p>cla        : {{ personagem.cla         }}</p>
-    <p>disciplinas: {{ personagem.disciplinas }}</p>
-    <p>livro	  : {{ personagem.livro       }}</p>
+    <p>Disciplinas:</p>
+    <ul>
+        {% for disciplina in personagem.disciplinas.all %}
+            <li>{{disciplina.disciplina}} - {{ disciplina.nome }}</li>
+        {% endfor %}
+    </ul>
+{#    <p>livro	  : {{ personagem.livro       }}</p> #}
     <a href="{% url 'personagem_list' %}">Voltar à lista de Personagens</a>
 </body>
 </html>
