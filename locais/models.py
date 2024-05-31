@@ -29,10 +29,10 @@ class Local(models.Model):
     
     class Meta:
         verbose_name = _("Local")
-        verbose_name_plural = _("Locals")
+        verbose_name_plural = _("Locais")
 
     def __str__(self):
-        return self.name
+        return self.nome
 
     def get_absolute_url(self):
         return reverse("Local_detail", kwargs={"pk": self.pk})
