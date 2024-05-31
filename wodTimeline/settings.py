@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'livros',
     'disciplinas',
     'clas',
-    'personagens'
+    'personagens',
+    'locais',
 ]
 
 MIDDLEWARE = [
