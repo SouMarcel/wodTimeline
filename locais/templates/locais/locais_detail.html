@@ -6,7 +6,13 @@
 </head>
 <body>
     <h1>{{ title }}</h1>
-    <p>Nome: {{ edicao.nome }}</p>
-    <a href="{% url 'edicao_list' %}">Voltar à lista de edições</a>
+    <p>Nome     : {{ local.nome     }}</p>
+    <p>regiao   : {{ local.regiao   }}</p>
+    <p>dimensao : {{ local.get_dimensao_display }}</p>
+    <p>era      : {{ local.era      }}</p>
+    <p>livro    : {{ local.livro    }}</p>
+
+    <br>
+    <a href="{% url 'local_list' %}">Voltar à lista de Locais</a>
 </body>
 </html>

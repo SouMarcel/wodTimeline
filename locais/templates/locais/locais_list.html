@@ -7,12 +7,12 @@
 <body>
     <h1>{{ title }}</h1>
     <ul>
-        {% for edicao in edicoes %}
+        {% for local in local %}
             <li>
-                <a href="{% url 'edicao_detail' edicao.pk %}">{{ edicao.nome }}</a>
+                <a href="{% url 'local_detail' local.pk %}">{{ local.nome }} - {{ local.livro }}</a>
             </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'edicao_create' %}">Adicionar Nova Edição</a>
+    <a href="{% url 'local_novo' %}">Adicionar Novo Local</a>
 </body>
 </html>

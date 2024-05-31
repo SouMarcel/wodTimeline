@@ -1,4 +1,4 @@
-<!-- edicoes/templates/edicoes/edicao_form.html -->
+<!-- locais/templates/locais/locais_form.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +10,9 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Salvar</button>
+        <button type="submit" name="action" value="save_and_add_new">Salvar e adicionar nova entrada</button>
     </form>
-    <a href="{% url 'edicao_list' %}">Voltar à lista de edições</a>
     <br>
-    <a href="{% url 'livro_create' %}">Voltar para adicionar Novo Livro</a>
+    <a href="{% url 'local_list' %}">Voltar à lista de locais</a>
 </body>
 </html>
