@@ -1,14 +1,13 @@
-# Nome do Projeto
+# Projeto Django: wodTimeline
 
-[Inserir uma imagem aqui se quiser]
 
 ## Resumo do Projeto
 
-Breve descrição do projeto, incluindo seu propósito, funcionalidades principais e qualquer informação relevante para os usuários.
+O projeto visa criar uma base de consulta para o lore do universo de RPG Wolrd Of Darkness.
 
 ## Apps
 
-### App1
+### Livros
 
 Descrição do App1, incluindo seu propósito, funcionalidades e qualquer informação relevante para os usuários.
 
@@ -25,20 +24,26 @@ Breve descrição de outros apps, se houver.
 Para clonar este repositório e configurá-lo localmente, siga estas etapas:
 
 1. Clone o repositório para o seu ambiente local usando o seguinte comando:
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+```bash
+git clone https://github.com/SouMarcel/wodTimeline.git
+```
 
 2. Navegue até o diretório do projeto:
-cd nome-do-repositorio
-
+```bash
+cd wodTimeline
+```
 
 3. Crie e ative um ambiente virtual usando o `venv` ou `virtualenv`:
+```python
 python -m venv myenv
 source myenv/bin/activate # No Windows: myenv\Scripts\activate
+```
 
 
 4. Instale as dependências do projeto a partir do arquivo `requirements.txt`:
+```bash
 pip install -r requirements.txt
-
+```
 
 5. Agora o projeto está configurado e pronto para ser executado localmente!
 
