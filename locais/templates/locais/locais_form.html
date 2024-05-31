@@ -1,0 +1,18 @@
+<!-- edicoes/templates/edicoes/edicao_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'edicao_list' %}">Voltar à lista de edições</a>
+    <br>
+    <a href="{% url 'livro_create' %}">Voltar para adicionar Novo Livro</a>
+</body>
+</html>

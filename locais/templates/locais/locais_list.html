@@ -1,0 +1,18 @@
+<!-- edicoes/templates/edicoes/edicao_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <ul>
+        {% for edicao in edicoes %}
+            <li>
+                <a href="{% url 'edicao_detail' edicao.pk %}">{{ edicao.nome }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'edicao_create' %}">Adicionar Nova Edição</a>
+</body>
+</html>
