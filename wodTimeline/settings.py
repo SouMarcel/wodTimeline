@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'clas',
     'personagens',
     'locais',
+    'eventos',
+    
 ]
 
 MIDDLEWARE = [
