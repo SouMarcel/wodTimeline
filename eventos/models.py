@@ -3,6 +3,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django.utils.text import slugify  # Importa a função slugify para gerar slugs
 from locais.models import Local
 from livros.models import Livro
 from personagens.models import Personagem
@@ -57,6 +58,8 @@ class Evento(models.Model):
     tempo = models.ForeignKey(Tempo, verbose_name=_("Tempo"), on_delete=models.CASCADE)  # Período histórico ao qual o evento pertence
     criado_em = models.DateField(_("Criado em"), auto_now_add=True)  # Data de criação do registro
     atualizado_em = models.DateField(_("Atualizado em"), auto_now=True)  # Data de última atualização do registro
+    slug = models.SlugField(_("Slug"), max_length=200, unique=True, blank=True, null=True)  # Campo slug para URL amigável
+
 
     class Meta:
         verbose_name = _("evento")  # Nome singular para o modelo no admin
@@ -70,3 +73,8 @@ class Evento(models.Model):
         Retorna o URL absoluto para detalhes deste objeto Evento.
         """
         return reverse("evento_detail", kwargs={"pk": self.pk})
+
+    def save(self, *args, **kwargs):
+            if not self.slug:
+                self.slug = slugify(self.nome)  # Gera automaticamente o slug baseado no campo nome
+            super().save(*args, **kwargs)

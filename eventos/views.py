@@ -5,20 +5,32 @@ from .models import Evento
 from .forms import EventoForm
 
 def home(request):
+    """
+    View para renderizar a página inicial do aplicativo de eventos.
+    """
     return render(request, 'eventos/home.html')
 
 
 def lista(request):
+    """
+    View para listar todos os eventos cadastrados.
+    """
     eventos = Evento.objects.all()
     return render(request, 'eventos/lista.html', {'eventos': eventos})
 
 
 def detalhe(request, pk):
+    """
+    View para exibir detalhes de um evento específico.
+    """
     evento = get_object_or_404(Evento, pk=pk)
     return render(request, 'eventos/detalhe.html', {'evento': evento})
 
 
 def novo(request):
+    """
+    View para criar um novo evento.
+    """
     if request.method == 'POST':
         form = EventoForm(request.POST)
         if form.is_valid():
@@ -30,6 +42,9 @@ def novo(request):
 
 
 def edit_delete(request, pk):
+    """
+    View para editar ou excluir um evento existente.
+    """
     evento = get_object_or_404(Evento, pk=pk)
     
     if request.method == 'POST':
