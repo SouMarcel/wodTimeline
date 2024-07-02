@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,5 @@ urlpatterns = [
     path('personagens/', include('personagens.urls')),
     path("locais/", include('locais.urls')),
     path("eventos/", include('eventos.urls'), name="eventos"),
+    path("", views.home , name="home") # vai procurar na pasta STATIC
 ]
