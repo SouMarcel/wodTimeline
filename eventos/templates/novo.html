@@ -1,0 +1,17 @@
+<!-- eventos/templates/eventos/novo.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Evento</title>
+</head>
+<body>
+    <h1>Novo Evento</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

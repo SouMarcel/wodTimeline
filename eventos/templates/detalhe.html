@@ -1,0 +1,40 @@
+<!-- eventos/templates/eventos/detalhe.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Evento: {{ evento.nome }}</title>
+</head>
+<body>
+    <h1>{{ evento.nome }}</h1>
+    <p><strong>Resumo:</strong> {{ evento.resumo }}</p>
+    <p><strong>Descrição:</strong></p>
+    <p>{{ evento.descricao }}</p>
+    <p><strong>Tempo:</strong> {{ evento.tempo.era }}</p>
+    <p><strong>Locais:</strong></p>
+    <ul>
+        {% for local in evento.local.all %}
+        <li>{{ local.nome }}</li>
+        {% empty %}
+        <li>Não há locais associados a este evento.</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Livros:</strong></p>
+    <ul>
+        {% for livro in evento.livro.all %}
+        <li>{{ livro.titulo }}</li>
+        {% empty %}
+        <li>Não há livros associados a este evento.</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Personagens:</strong></p>
+    <ul>
+        {% for personagem in evento.personagem.all %}
+        <li>{{ personagem.nome }}</li>
+        {% empty %}
+        <li>Não há personagens associados a este evento.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

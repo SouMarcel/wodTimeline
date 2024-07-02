@@ -1,0 +1,30 @@
+<!-- eventos/templates/eventos/edit_delete.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar/Excluir Evento: {{ evento.nome }}</title>
+</head>
+<body>
+    <h1>Editar/Excluir Evento: {{ evento.nome }}</h1>
+    
+    <section>
+        <h2>Editar Evento</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" name="editar">Salvar Alterações</button>
+        </form>
+    </section>
+    
+    <section>
+        <h2>Excluir Evento</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <p>Tem certeza que deseja excluir o evento "{{ evento.nome }}"?</p>
+            <button type="submit" name="excluir" onclick="return confirm('Tem certeza que deseja excluir este evento?')">Confirmar Exclusão</button>
+        </form>
+    </section>
+</body>
+</html>
