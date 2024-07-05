@@ -11,7 +11,7 @@
     <ul>
         {% for evento in eventos %}
         <li>
-            <a href="{% url 'detalhe' pk=evento.pk %}">{{ evento.nome }}</a>
+            <a href="{% url 'eventos:detalhe' pk=evento.pk %}">{{ evento.nome }}</a>
             <p>{{ evento.resumo }}</p>
         </li>
         {% empty %}
