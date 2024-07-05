@@ -16,16 +16,26 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="{% url 'eventos:home' %}">Home</a></li>
-                <li><a class="dropdown-item" href="{% url 'eventos:novo' %}">Novo</a></li>
-                <li><a class="dropdown-item" href="{% url 'eventos:lista' %}">Lista de Eventos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'eventos:novo' %}">Novo</a></li>
+                    <li><a class="dropdown-item" href="{% url 'eventos:lista' %}">Lista de Eventos</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Sair
+                Livros
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                {% comment %} <li><a class="dropdown-item" href="{% url 'sair' %}">Sair</a></li> {% endcomment %}
+                    <li><a class="dropdown-item" href="{% url 'livros:home' %}">Home</a></li>
+                    <li><a class="dropdown-item" href="{% url 'livros:livro_create' %}">Novo</a></li>
+                    <li><a class="dropdown-item" href="{% url 'livros:livro_list' %}">Lista de Eventos</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sair
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {% comment %} <li><a class="dropdown-item" href="{% url 'sair' %}">Sair</a></li> {% endcomment %}
                 </ul>
             </li>
         </ul>

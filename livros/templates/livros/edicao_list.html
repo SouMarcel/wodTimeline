@@ -9,10 +9,10 @@
     <ul>
         {% for edicao in edicoes %}
             <li>
-                <a href="{% url 'edicao_detail' edicao.pk %}">{{ edicao.nome }}</a>
+                <a href="{% url 'livros:edicao_detail' edicao.pk %}">{{ edicao.nome }}</a>
             </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'edicao_create' %}">Adicionar Nova Edição</a>
+    <a href="{% url 'livros:edicao_create' %}">Adicionar Nova Edição</a>
 </body>
 </html>

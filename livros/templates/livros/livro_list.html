@@ -9,10 +9,10 @@
     <ul>
         {% for livro in livros %}
             <li>
-                <a href="{% url 'livro_detail' livro.pk %}">{{ livro.nome }} - {{ livro.edicao.nome }}</a>
+                <a href="{% url 'livros:livro_detail' livro.pk %}">{{ livro.nome }} - {{ livro.edicao.nome }}</a>
             </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'livro_create' %}">Adicionar Novo Livro</a>
+    <a href="{% url 'livros:livro_create' %}">Adicionar Novo Livro</a>
 </body>
 </html>
