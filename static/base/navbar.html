@@ -1,0 +1,36 @@
+{# /static/navbar.html #}
+{% load static %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-color-dark">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}"><img src= '#'  width="20px" alt="">&nbspwodTimeline</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Eventos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'eventos:home' %}">Home</a></li>
+                <li><a class="dropdown-item" href="{% url 'eventos:novo' %}">Novo</a></li>
+                <li><a class="dropdown-item" href="{% url 'eventos:lista' %}">Lista de Eventos</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sair
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {% comment %} <li><a class="dropdown-item" href="{% url 'sair' %}">Sair</a></li> {% endcomment %}
+                </ul>
+            </li>
+        </ul>
+        <link rel="shortcut icon" href="{% static 'geral/img/Facebook-icon-1.png' %}">
+        <link rel="shortcut icon" href="{% static 'geral/img/instagram-icon-1.webp' %}">
+    </div>
+    </div>
+</nav>

@@ -1,3 +1,5 @@
+# /wodTimeline/urls.py
+
 """
 URL configuration for wodTimeline project.
 
@@ -24,7 +26,7 @@ urlpatterns = [
     path('disciplinas/', include('disciplinas.urls')),
     path('clas/', include('clas.urls')),
     path('personagens/', include('personagens.urls')),
-    path("locais/", include('locais.urls')),
-    path("eventos/", include('eventos.urls'), name="eventos"),
-    path("", views.home , name="home") # vai procurar na pasta STATIC
+    path('locais/', include('locais.urls')),
+    path('eventos/', include('eventos.urls', namespace='eventos')),
+    path('', views.home, name='home'),
 ]

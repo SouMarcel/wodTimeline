@@ -1,25 +1,3 @@
-# Estrutura de pastas do projeto
-
-### Script para gerar a estrutura de pastas
-```bash
-$excludedFolders = '__init__py', '.venv', 'pycache', '__pycache__', '__init__', 'venv'
-$targetDirectory = Get-Location
-
-function Get-DirectoryTree($path, $prefix = '') {
-    Get-ChildItem -Path $path -Directory | Where-Object { $excludedFolders -notcontains $_.Name } | ForEach-Object {
-        "$prefix+ $($_.Name)"
-        Get-DirectoryTree $_.FullName -prefix "$prefix   |"
-    }
-    Get-ChildItem -Path $path -File | ForEach-Object {
-        "$prefix   |--- $($_.Name)"
-    }
-}
-
-Get-DirectoryTree $targetDirectory | Out-File 'tree.md'
-```
-
-```python
-
 + clas
    |+ migrations
    |   |   |--- __init__.py
@@ -155,7 +133,4 @@ Get-DirectoryTree $targetDirectory | Out-File 'tree.md'
    |--- manage.py
    |--- README.md
    |--- requirements.txt
-
-
-
-```
+   |--- tree.md
